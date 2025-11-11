@@ -4,21 +4,14 @@
 # SURNAME: Khudash  
 # AGE: 17
 
-# DATE: 18.10.2025
+# DATE: 12.11.2025
 # APP: WINDOWS_CLEANER
 # TYPE: CLEANER
 # VERSION: LATEST
 # PLATFORM: win32
 
 
-from os import (
-    walk, 
-    abort, 
-    mkdir, 
-    rmdir, 
-    remove, 
-    getlogin, 
-)
+from os import walk, abort, mkdir, rmdir, remove, getlogin
 from os.path import isdir, exists, getsize
 from subprocess import run as cmd, DEVNULL
 from shutil import get_terminal_size
@@ -27,11 +20,10 @@ from glob import glob
 
 
 if platform != 'win32': 
-    print(f'NOT SUPPORTED {platform}')
-    input()
+    input(f'NOT SUPPORTED {platform}')
     abort()
 
-if not 'onefile' in __file__:
+if 'onefile' not in __file__:
     from elevate import elevate
     elevate()
 
@@ -184,8 +176,8 @@ def main():
 
     cmd(['cls'])
 
-    left = shell_width // 2 - 16
-    right = shell_width // 2 - 17
+    left = (shell_width // 2) - 16
+    right = (shell_width // 2) - 17
 
     print(f'/{"-":-^{left}}<Cleaning started successfully>{"-":-^{right}}\\')
     start_cleaning(PATHS_TO_CLEANING, PATHS_TO_CLEANING)
@@ -209,8 +201,8 @@ def main():
         ) - len('<Cleaning started successfully>')
     ) // 2
     
-    left = (shell_width // 2 - 16) - (output_len + 1)
-    right = (shell_width // 2 - 17) - output_len
+    left = ((shell_width // 2) - 16) - (output_len + 1)
+    right = ((shell_width // 2) - 17) - output_len
 
 
     input(
