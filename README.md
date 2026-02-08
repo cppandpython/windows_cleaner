@@ -2,6 +2,8 @@
 
 
 <br><br>
+![cleaner](cleaner.png)
+<br><br>
 
 
 ## en
@@ -32,10 +34,6 @@ pip install elevate
 # Launch
 python cleaner.py
 ```
-
-<br><br>
-
-![cleaner](cleaner.png)
 
 
 <br><br><br>
@@ -69,7 +67,3 @@ pip install elevate
 # Запуск
 python cleaner.py
 ```
-
-<br><br>
-
-![cleaner](cleaner.png)
