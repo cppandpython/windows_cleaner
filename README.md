@@ -28,9 +28,6 @@ cleaner — Offers both regular and deep cleaning
 # Clone the repository
 git clone https://github.com/cppandpython/windows_cleaner.git
 
-# Install depending
-pip install elevate
-
 # Launch
 python cleaner.py
 ```
@@ -60,9 +57,6 @@ cleaner — Обеспечивает как обычную так и глубо�
 ```bash
 # Клонируй репозиторий
 git clone https://github.com/cppandpython/windows_cleaner.git
-
-# Установи зависимости
-pip install elevate
 
 # Запуск
 python cleaner.py
