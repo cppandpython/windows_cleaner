@@ -11,23 +11,25 @@
 # PLATFORM: win32
 
 
-from os import walk, abort, mkdir, rmdir, remove, getlogin
-from os.path import isdir, exists, getsize
 from subprocess import run as cmd, DEVNULL
+from os.path import isdir, exists, getsize
+from os import walk, mkdir, rmdir, remove
+from sys import exit as _exit, executable
 from shutil import get_terminal_size
+from getpass import getuser
+from ctypes import windll
 from sys import platform
 from glob import glob
 
 
 if platform != 'win32': 
-    input(f'NOT SUPPORTED {platform}')
-    abort()
+    raise SystemError(f'DO NOT SUPPORTED ({platform})')
 
-if 'onefile' not in __file__:
-    from elevate import elevate
-    elevate()
+if windll.shell32.IsUserAnAdmin() == 0:
+    windll.shell32.ShellExecuteW(None, 'runas', executable, __file__, None, 1)
+    _exit()
 
-USER = getlogin()
+USER = getuser()
 
 # THESE PATHS WILL ALWAYS BE CLEARED
 #------------------------------------#
@@ -156,11 +158,11 @@ def main():
 
     while True:
         try: 
-            cmd(['cls'])
+            cmd('cls', shell=True)
 
             match input('Deep cleaning\nYes\\No: ').lower().strip():
                 case 'exit': 
-                    abort()
+                    _exit()
                 case 'yes': 
                     deep_flag = True
                 case 'no':
@@ -168,13 +170,13 @@ def main():
                 case _: 
                     continue
         except KeyboardInterrupt: 
-            abort()
+            _exit()
         except: 
             continue
         else: 
             break
 
-    cmd(['cls'])
+    cmd('cls', shell=True)
 
     left = (shell_width // 2) - 16
     right = (shell_width // 2) - 17
